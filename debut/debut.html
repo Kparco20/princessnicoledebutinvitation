@@ -1,0 +1,1769 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Princess Nicole Debut Invitation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-serif-elegant {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    
+    .font-sans-elegant {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-float-delay {
+      animation: float 6s ease-in-out infinite 2s;
+    }
+    
+    .animate-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    
+    .animate-fade-in-delay-1 {
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+    
+    .animate-fade-in-delay-2 {
+      animation: fadeInUp 1s ease-out 0.4s forwards;
+      opacity: 0;
+    }
+    
+    .animate-fade-in-delay-3 {
+      animation: fadeInUp 1s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+    
+    .animate-fade-in-delay-4 {
+      animation: fadeInUp 1s ease-out 0.8s forwards;
+      opacity: 0;
+    }
+    
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    .sparkle::before {
+      content: '✦';
+      font-size: 12px;
+    }
+    /* Card photo behind content */
+    .card-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      filter: brightness(0.55) saturate(0.95);
+      transform: translateZ(0);
+      z-index: 0;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Envelope button styling */
+    .envelope-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope-btn:hover svg {
+      transform: scale(1.1);
+    }
+
+    /* Modal styling */
+    .event-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-modal.active {
+      display: flex !important;
+    }
+
+    @keyframes fadeInModal {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-content {
+      background: linear-gradient(180deg, rgba(220,150,190,0.98) 0%, rgba(245,190,220,0.99) 100%);
+      border: 3px solid rgba(247,111,168,0.8);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+    }
+
+    @keyframes slideInModal {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid rgba(247,111,168,0.6);
+      padding-bottom: 1.5rem;
+    }
+
+    .modal-header h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      color: #000;
+      margin: 0;
+      text-shadow: 0 2px 8px rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #000;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .modal-close:hover {
+      transform: scale(1.2);
+    }
+
+    .modal-body {
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .modal-body p {
+      margin: 1.2rem 0;
+      line-height: 1.8;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+    }
+
+    .modal-body p strong {
+      color: #000;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+    }
+
+    .modal-body p span {
+      line-height: 1.8;
+      color: #000;
+    }
+
+    .modal-body svg {
+      flex-shrink: 0;
+      margin-top: 0.35rem;
+      filter: drop-shadow(0 1px 2px rgba(255,255,255,0.3));
+    }
+
+    /* Events modal nested styling */
+    .modal-body .events-btn {
+      background: linear-gradient(135deg, rgba(247,111,168,0.8) 0%, rgba(244,164,198,0.8) 100%);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-top: 1.5rem;
+    }
+
+    .modal-body .events-btn:hover {
+      background: linear-gradient(135deg, rgba(247,111,168,1) 0%, rgba(244,164,198,1) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(247,111,168,0.4);
+    }
+
+    .events-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1001;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInModal 0.3s ease;
+    }
+
+    .events-modal.active {
+      display: flex;
+    }
+
+    .events-modal .modal-content {
+      max-width: 700px;
+      max-height: 90vh;
+    }
+
+    .event-item {
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 3px solid rgba(247,111,168,0.8);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .event-item:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateX(5px);
+    }
+
+    .event-item h3 {
+      margin: 0 0 0.5rem 0;
+      color: #000;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem;
+    }
+
+    .event-item p {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .rose-counter {
+      display: inline-block;
+      background: rgba(247,111,168,0.9);
+      color: #000;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      /* Make wrapper background scroll on smaller screens for better performance */
+      #invitation-wrapper {
+        background-attachment: scroll !important;
+        background-position: top center !important;
+      }
+
+      /* Slightly tighter card spacing on tablets/phones */
+      #card-container {
+        padding: 1.25rem !important; /* ~20px */
+        border-radius: 1rem !important;
+      }
+
+      /* Reposition and crop the photo for faces */
+      .card-photo {
+        object-position: center 30% !important;
+        filter: brightness(0.6) saturate(0.95) !important;
+      }
+
+      /* Scale down large headings for narrow screens */
+      #celebrant-name { font-size: 2.2rem !important; }
+      .font-serif-elegant.text-3xl { font-size: 1.15rem !important; }
+      .font-serif-elegant.text-7xl { font-size: 2.6rem !important; }
+    }
+
+    @media (max-width: 420px) {
+      /* Mobile: make the card full-width with comfortable padding */
+      .max-w-lg { max-width: 96% !important; }
+      #card-container { padding: 1rem !important; }
+
+      /* Reduce text density */
+      #celebrant-name { font-size: 1.9rem !important; }
+      .animate-fade-in-delay-2 .text-7xl, .font-serif-elegant.text-7xl { font-size: 2.2rem !important; }
+      p#invite-text { letter-spacing: 0.12em !important; }
+
+      /* Ensure sparkles don't overlap critical content on small screens */
+      .sparkle { display: none; }
+    }
+  </style>
+  <style>
+    /* Ensure the 18 Blessings participants modal appears above other modals */
+    #blessings-modal {
+      z-index: 1204 !important;
+    }
+
+    #blessings-modal .modal-content {
+      position: relative;
+      z-index: 1205;
+      box-shadow: 0 44px 130px rgba(0,0,0,0.72);
+      transform: translateZ(0) scale(1);
+    }
+  </style>
+  <style>
+    /* Aesthetic scrollbar styles (WebKit & Blink) */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: linear-gradient(180deg, rgba(240,220,230,0.25), rgba(250,240,245,0.12));
+      border-radius: 999px;
+      margin: 6px 0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(247,111,168,0.95), rgba(244,164,198,0.95));
+      border-radius: 999px;
+      border: 3px solid rgba(255,255,255,0.14);
+      box-shadow: 0 6px 18px rgba(247,111,168,0.18), inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(247,111,168,0.24), inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+
+    /* Firefox scrollbar colors */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(247,111,168,0.95) rgba(250,240,245,0.08);
+    }
+
+    /* Make scrollbars match inside modals (when overflow-y: auto) */
+    .modal-content::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(247,111,168,1), rgba(244,164,198,0.95));
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Small touch improvements for Windows precision touchpads */
+    html, body {
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+  <style>
+    /* Full-screen cover modal for the 18 Roses "cover" view */
+    .cover-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.85);
+      padding: 2rem;
+    }
+
+    .cover-modal.active { display: flex; }
+
+    .cover-content {
+      width: 100%;
+      max-width: 1000px;
+      border-radius: 14px;
+      overflow: hidden;
+      transform-origin: center;
+      animation: slideInModal 0.28s ease;
+    }
+
+    .cover-content img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+    }
+
+    .cover-caption {
+      background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+      color: #fff;
+      padding: 1rem 1.25rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .cover-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      z-index: 1110;
+      background: rgba(255,255,255,0.06);
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .event-item h3.roses-clickable { cursor: pointer; }
+    .event-item h3.blessings-clickable { cursor: pointer; }
+  </style>
+  <style>
+    /* Ensure the 18 Roses participants modal appears above other modals */
+    #roses-modal {
+      z-index: 1202 !important;
+    }
+
+    #roses-modal .modal-content {
+      position: relative;
+      z-index: 1203;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+      transform: translateZ(0) scale(1);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-sans-elegant">
+  <div id="invitation-wrapper" class="min-h-full w-full overflow-auto relative" style="background: linear-gradient(135deg, #E8D5C4 0%, #F1D9E8 25%, #F5C7D8 50%, #F4A4C6 75%, #F76FA8 100%), url('assets/image.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-blend-mode: overlay;"><!-- Decorative sparkles -->
+   <div class="sparkle text-pink-400" style="top: 10%; left: 15%;"></div>
+   <div class="sparkle text-pink-400" style="top: 20%; right: 20%; animation-delay: 0.5s;"></div>
+   <div class="sparkle text-pink-400" style="top: 40%; left: 10%; animation-delay: 1s;"></div>
+   <div class="sparkle text-pink-400" style="top: 60%; right: 15%; animation-delay: 1.5s;"></div>
+   <div class="sparkle text-pink-400" style="top: 80%; left: 20%; animation-delay: 0.8s;"></div>
+   <div class="sparkle text-pink-400" style="bottom: 15%; right: 25%; animation-delay: 1.2s;"></div><!-- Main invitation card -->
+   <div class="flex items-center justify-center min-h-full py-8 px-4">
+    <div class="relative max-w-lg w-full"><!-- Decorative corner flourishes -->
+     <svg class="absolute -top-4 -left-4 w-24 h-24 text-pink-500 opacity-60 animate-float" viewbox="0 0 100 100" fill="none"><path d="M10 50 Q10 10 50 10" stroke="currentColor" stroke-width="2" fill="none" /> <path d="M5 40 Q5 5 40 5" stroke="currentColor" stroke-width="1.5" fill="none" /> <circle cx="50" cy="10" r="3" fill="currentColor" /> <circle cx="10" cy="50" r="3" fill="currentColor" />
+     </svg>
+     <svg class="absolute -top-4 -right-4 w-24 h-24 text-pink-500 opacity-60 animate-float-delay" viewbox="0 0 100 100" fill="none" style="transform: scaleX(-1);"><path d="M10 50 Q10 10 50 10" stroke="currentColor" stroke-width="2" fill="none" /> <path d="M5 40 Q5 5 40 5" stroke="currentColor" stroke-width="1.5" fill="none" /> <circle cx="50" cy="10" r="3" fill="currentColor" /> <circle cx="10" cy="50" r="3" fill="currentColor" />
+     </svg>
+     <svg class="absolute -bottom-4 -left-4 w-24 h-24 text-pink-500 opacity-60 animate-float-delay" viewbox="0 0 100 100" fill="none" style="transform: scaleY(-1);"><path d="M10 50 Q10 10 50 10" stroke="currentColor" stroke-width="2" fill="none" /> <path d="M5 40 Q5 5 40 5" stroke="currentColor" stroke-width="1.5" fill="none" /> <circle cx="50" cy="10" r="3" fill="currentColor" /> <circle cx="10" cy="50" r="3" fill="currentColor" />
+     </svg>
+     <svg class="absolute -bottom-4 -right-4 w-24 h-24 text-pink-500 opacity-60 animate-float" viewbox="0 0 100 100" fill="none" style="transform: scale(-1);"><path d="M10 50 Q10 10 50 10" stroke="currentColor" stroke-width="2" fill="none" /> <path d="M5 40 Q5 5 40 5" stroke="currentColor" stroke-width="1.5" fill="none" /> <circle cx="50" cy="10" r="3" fill="currentColor" /> <circle cx="10" cy="50" r="3" fill="currentColor" />
+     </svg><!-- Card content -->
+    <div id="card-container" class="relative rounded-2xl p-8 md:p-12 text-center border border-pink-400/30" style="background: linear-gradient(180deg, rgba(200,150,180,0.6) 0%, rgba(240,180,200,0.7) 100%); box-shadow: 0 25px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,200,230,0.1);">
+     <img src="assets/image.png" alt="Celebrant photo" class="card-photo" />
+     <div class="card-content"><!-- Top decorative line -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-pink-400 to-transparent rounded-full"></div><!-- Crown/Tiara decoration -->
+      <div class="animate-fade-in mb-6">
+       <svg class="w-20 h-20 mx-auto text-pink-500" viewbox="0 0 100 60" fill="currentColor"><path d="M50 5 L55 25 L70 15 L65 35 L85 25 L75 45 L95 40 L80 55 L20 55 L5 40 L25 45 L15 25 L35 35 L30 15 L45 25 Z" fill="none" stroke="currentColor" stroke-width="2" /> <circle cx="50" cy="8" r="4" fill="currentColor" /> <circle cx="30" cy="18" r="3" fill="currentColor" /> <circle cx="70" cy="18" r="3" fill="currentColor" /> <circle cx="15" cy="28" r="2.5" fill="currentColor" /> <circle cx="85" cy="28" r="2.5" fill="currentColor" />
+       </svg>
+      </div><!-- You are invited text -->
+      <p id="invite-text" class="animate-fade-in-delay-1 text-pink-300/80 tracking-[0.3em] uppercase text-sm mb-4 font-sans-elegant font-light">You are cordially invited to</p><!-- Celebrant name -->
+      <h1 id="celebrant-name" class="animate-fade-in-delay-1 font-serif-elegant text-5xl md:text-6xl font-bold text-pink-100 mb-2" style="text-shadow: 0 2px 20px rgba(247,111,168,0.3);">Princess Nicole Catapang Mendoza</h1><!-- 18th Birthday -->
+      <div class="animate-fade-in-delay-2 flex items-center justify-center gap-4 my-6">
+       <div class="h-px w-16 bg-gradient-to-r from-transparent to-pink-400/50"></div>
+       <div class="relative"><span class="font-serif-elegant text-7xl md:text-8xl font-bold text-pink-400" style="text-shadow: 0 0 30px rgba(247,111,168,0.5);">18</span> <span class="absolute -top-2 -right-6 text-pink-300 text-lg">th</span>
+       </div>
+       <div class="h-px w-16 bg-gradient-to-l from-transparent to-pink-400/50"></div>
+      </div>
+      <p class="animate-fade-in-delay-2 font-serif-elegant text-3xl italic text-pink-200/90 mb-8">Birthday Debut</p><!-- Envelope button -->
+      <div class="animate-fade-in-delay-2 flex justify-center mb-8">
+       <button id="envelope-btn" class="envelope-btn" title="Click for event details">
+        <svg class="w-12 h-12 text-pink-400 hover:text-pink-300 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+         <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+         <path d="M2 6l10 7.5L22 6"></path>
+        </svg>
+       </button>
+      </div><!-- Decorative divider -->
+      <div class="animate-fade-in-delay-2 flex items-center justify-center gap-3 mb-8">
+       <svg class="w-8 h-8 text-pink-400/60" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2L9 9H2L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9H15L12 2Z" />
+       </svg>
+       <div class="w-24 h-px bg-pink-400/40"></div>
+       <svg class="w-4 h-4 text-pink-400/80" viewbox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4" />
+       </svg>
+       <div class="w-24 h-px bg-pink-400/40"></div>
+       <svg class="w-8 h-8 text-pink-400/60" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2L9 9H2L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9H15L12 2Z" />
+       </svg>
+      </div><!-- Event details -->
+      <div class="animate-fade-in-delay-3 space-y-4 mb-8">
+       <div class="flex items-center justify-center gap-3">
+        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect> <line x1="16" y1="2" x2="16" y2="6"></line> <line x1="8" y1="2" x2="8" y2="6"></line> <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <p id="event-date" class="text-pink-100/90 text-lg font-light tracking-wide">Friday, January 23, 2026</p>
+       </div>
+       <div class="flex items-center justify-center gap-3">
+        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <polyline points="12,6 12,12 16,14"></polyline>
+        </svg>
+        <p id="event-time" class="text-pink-100/90 text-lg font-light tracking-wide">5:00 PM</p>
+       </div>
+       <div class="flex items-center justify-center gap-3 mt-6">
+        <svg class="w-5 h-5 text-pink-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /> <circle cx="12" cy="10" r="3" />
+        </svg>
+        <div class="text-center">
+         <p id="venue-name" class="text-pink-100 text-lg font-medium">Edgardo's Hotel</p>
+         <p id="venue-address" class="text-pink-200/70 text-sm font-light">123 Elegance Avenue, Manila</p>
+        </div>
+       </div>
+      </div><!-- Personal message -->
+      <div class="animate-fade-in-delay-3 my-8 py-6 border-t border-b border-pink-400/20">
+       <p id="invitation-message" class="font-serif-elegant text-lg italic text-pink-200/80 leading-relaxed px-4">"Join me as I celebrate this milestone and embrace the journey to adulthood. Your presence would make this day truly unforgettable."</p>
+      </div><!-- RSVP -->
+      <div class="animate-fade-in-delay-4">
+      </div><!-- Bottom decorative element -->
+      <div class="mt-8 flex justify-center">
+       <svg class="w-16 h-8 text-pink-400/50" viewbox="0 0 64 32" fill="none"><path d="M0 16 Q16 0 32 16 Q48 32 64 16" stroke="currentColor" stroke-width="1.5" fill="none" /> <circle cx="32" cy="16" r="3" fill="currentColor" />
+       </svg>
+      </div>
+      </div>
+    </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- 18 Roses Participants Modal -->
+  <div id="roses-modal" class="events-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>18 Roses Participants</h2>
+     <button class="modal-close" id="roses-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">Here are the people who will present the 18 roses:</p>
+     <ol id="roses-list" style="margin:0 0 1rem 0; padding-left:1.25rem; line-height:1.8; list-style-position: inside;">
+    <li>1. Adrian Baticos</li>
+    <li>2. Reyvin Olarte</li>
+    <li>3. Ron Vincent Fajutagana</li>
+    <li>4. Alexander Masangcay</li>
+    <li>5. Mark Juztine Argame</li>
+    <li>6. Harley Camua</li>
+    <li>7. Joshua Steven Ramilo</li>
+    <li>8. Frank Fortaleza</li>
+    <li>9. Jan Joel Baliguat</li>
+    <li>10. Gig Faderon</li>
+    <li>11. Micho Oliva</li>
+    <li>12. Joshua Catapang</li>
+    <li>13. Tristan Jacob Garcia</li>
+    <li>14. King Paul Gain</li>
+    <li>15. Basty Catapang</li>
+    <li>16. John Dom Catapang</li>
+    <li>17. Kenneth Parco</li>
+    <li>18. Benito Mendoza Jr.</li>
+     </ol>
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="roses-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- 18 Blessings Participants Modal -->
+  <div id="blessings-modal" class="events-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>18 BLESSINGS</h2>
+     <button class="modal-close" id="blessings-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">Here are the people who will offer the 18 blessings:</p>
+     <ol id="blessings-list" style="margin:0 0 1rem 0; padding-left:1.25rem; line-height:1.8; list-style-position: inside;">
+    <li>1. Marivic Montesa</li>
+    <li>2. Christia Rhea Dela Cruz</li>
+    <li>3. Gimo de Roxas</li>
+    <li>4. Jay Ar Catapang</li>
+    <li>5. Allan Catapang</li>
+    <li>6. Jake Silang</li>
+    <li>7. Marissa Aquino</li>
+    <li>8. Abegail Catapang</li>
+    <li>9. Ching Castillo</li>
+    <li>10. Angie Dayanghirang</li>
+    <li>11. Amy Perez</li>
+    <li>12. Sheryl Valois</li>
+    <li>13. Myline Silang</li>
+    <li>14. Maricel Tañedo</li>
+    <li>15. Violeta Mortel</li>
+    <li>16. Esperanza Sapunto</li>
+    <li>17. Lucilo Catapang</li>
+    <li>18. Zenaida Mendoza</li>
+     </ol>
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="blessings-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- 18 TREASURES Participants Modal -->
+  <div id="treasures-modal" class="events-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>18 TREASURES Participants</h2>
+     <button class="modal-close" id="treasures-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">Here are the people who will present the 18 treasures:</p>
+     <ol id="treasures-list" style="margin:0 0 1rem 1.2rem; padding:0; line-height:1.8;">
+    <li>1. Eleanor Sabile</li>
+    <li>2. Arlene Estrada</li>
+    <li>3. Rosh Mendoza</li>
+    <li>4. Vincent Rondael</li>
+    <li>5. Maremy Manalo</li>
+    <li>6. Khristine Lyn Panganiban</li>
+    <li>7. Michelle Falconit</li>
+    <li>8. Ptra. Liza Valdez</li>
+    <li>9. Ptra. Rachel Bladen</li>
+    <li>10. Ptra. Anne Dela Cruz</li>
+    <li>11. Ptra. Revegene Hope Casaol</li>
+    <li>12. Diane Oliva</li>
+    <li>13. Mona Liza Castillo</li>
+    <li>14. Tricia Catapang</li>
+    <li>15. Eugenie Gain</li>
+    <li>16. Lydia Filipina Parco</li>
+    <li>17. Marjorie Catapang</li>
+    <li>18. Annaliza Catapang</li>
+     </ol>
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="treasures-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- 18 CANDLES Participants Modal -->
+  <div id="candles-modal" class="events-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>18 CANDLES Participants</h2>
+     <button class="modal-close" id="candles-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">Here are the people who will present the 18 candles:</p>
+     <ol id="candles-list" style="margin:0 0 1rem 1.2rem; padding:0; line-height:1.8;">
+    <li>1. Alexis Pastrana</li>
+    <li>2. Vilma Catapang</li>
+    <li>3. Marivic Montesa</li>
+    <li>4. Christia Rhea Dela Cruz</li>
+    <li>5. Michelle Falconit</li>
+    <li>6. Ruth Castillo</li>
+    <li>7. Wheng Catapang</li>
+    <li>8. Tristan Paul Gain</li>
+    <li>9. Eugenie Gain</li>
+    <li>10. Hermis Catapang</li>
+    <li>11. Marjorie Catapang</li>
+    <li>12. Annaliza Catapang</li>
+    <li>13. Flor Catapang</li>
+    <li>14. Miguela Catapang</li>
+    <li>15. Zenaida Mendoza</li>
+    <li>16. Rhea Mendoza</li>
+    <li>17. Mary Joy Catapang</li>
+    <li>18. Melvin Mendoza</li>
+     </ol>
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="candles-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- 18 SCENTS Participants Modal -->
+  <div id="scents-modal" class="events-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>18 SCENTS Participants</h2>
+     <button class="modal-close" id="scents-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">Here are the people who will present the 18 scents:</p>
+     <ol id="scents-list" style="margin:0 0 1rem 1.2rem; padding:0; line-height:1.8;">
+    <li>1. Mike Eborja</li>
+    <li>2. Andrei Mapalad</li>
+    <li>3. Nova Faith Valdez</li>
+    <li>4. Harley Camua</li>
+    <li>5. Zai Selorio</li>
+    <li>6. Abegail Sedeno</li>
+    <li>7. Raffy Mago</li>
+    <li>8. Apolinario Mendoza</li>
+    <li>9. Benito Mendoza Jr.</li>
+    <li>10. Chelly Mendoza</li>
+    <li>11. King Paul Gain</li>
+    <li>12. Princess Vhinjoyz Catapang</li>
+    <li>13. Queen Dhynise Catapang</li>
+    <li>14. Charisse Valerie Dela Cruz</li>
+    <li>15. Christine Valerie Dela Cruz</li>
+    <li>16. Kayelene Vital</li>
+    <li>17. Rychll Montesa</li>
+    <li>18. Mark Anthony Gutierrez</li>
+     </ol>
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="scents-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- 18 MAKEUP Participants Modal -->
+  <div id="makeup-modal" class="events-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>18 MAKEUP Participants</h2>
+     <button class="modal-close" id="makeup-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">Here are the professional makeup artists and stylists:</p>
+     <ol id="makeup-list" style="margin:0 0 1rem 1.2rem; padding:0; line-height:1.8;">
+    <li>1. Danish Umali</li>
+    <li>2. Althea Mae Pentinio</li>
+    <li>3. Princess Valerie Gusi</li>
+    <li>4. Rogelyn Samillano</li>
+    <li>5. Katrina Luisa Manahan</li>
+    <li>6. Ayesha Mae Fallena</li>
+    <li>7. Princess Diane de Torres</li>
+    <li>8. Shekeah Nicole Miraples</li>
+    <li>9. Francine Kim Gadon</li>
+    <li>10. Azynelle Lopez</li>
+    <li>11. Kathleen Paz</li>
+    <li>12. Annabelle Marte</li>
+    <li>13. Jhaynesly Kate Rioja</li>
+    <li>14. Mikah Angela Famisaran</li>
+    <li>15. Shiela Marie Faderon</li>
+    <li>16. Allysa Kim Gaa</li>
+    <li>17. Alexis Pastrana</li>
+    <li>18. Nina Charice Garcia</li>
+     </ol>
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="makeup-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- Dress Code Modal -->
+  <div id="dress-modal" class="events-modal" aria-hidden="true">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>Dress Code</h2>
+     <button class="modal-close" id="dress-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">We’d love for you to join us in semi-formal wear, incorporating the specified color palette. Ladies can choose dresses, skirts, or trousers, while gentlemen are encouraged to wear long-sleeved shirts or polo shirts.</p>
+
+     <div style="display:flex; gap:12px; justify-content:center; margin:0.5rem 0;">
+       <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><span style="width:38px; height:38px; border-radius:999px; background:#D8C3A0; display:block;"></span><small style="font-size:12px;">Beige</small></div>
+       <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><span style="width:38px; height:38px; border-radius:999px; background:#F7F7E8; display:block; border:1px solid rgba(0,0,0,0.04);"></span><small style="font-size:12px;">Ivory</small></div>
+       <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><span style="width:38px; height:38px; border-radius:999px; background:#F7BFC7; display:block;"></span><small style="font-size:12px;">Soft Blush</small></div>
+       <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><span style="width:38px; height:38px; border-radius:999px; background:#F48FB3; display:block;"></span><small style="font-size:12px;">Medium Pink</small></div>
+       <div style="display:flex; flex-direction:column; align-items:center; gap:6px;"><span style="width:38px; height:38px; border-radius:999px; background:#E56D96; display:block;"></span><small style="font-size:12px;">Rose</small></div>
+     </div>
+
+     <div style="text-align:left; font-size:0.95rem;">
+      <p style="font-weight:600; margin-bottom:6px;">Tips:</p>
+      <ul style="margin:0; padding-left:1.15rem;">
+       <li>Ladies: dresses, skirts, or trousers in the palette.</li>
+       <li>Gentlemen: long-sleeved shirts or polo shirts.</li>
+       <li>Keep it semi-formal; avoid loud prints.</li>
+      </ul>
+     </div>
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="dress-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- Gift Guide Modal -->
+  <div id="gift-modal" class="events-modal" aria-hidden="true">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>Gift Guide</h2>
+     <button class="modal-close" id="gift-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p style="margin-bottom:0.75rem;">Your presence is the greatest gift of all. However, if you are inclined to give a gift, monetary contributions or thoughtful presents will be gratefully appreciated.</p>
+
+     <div style="text-align:left; font-size:0.95rem;">
+       <p>Your presence is the greatest gift of all. However, if you are inclined to give a gift, monetary contributions or thoughtful presents will be gratefully appreciated.</p>
+     </div>
+
+     <div style="text-align:center; margin-top:1rem;">
+    <button id="gift-modal-ok" class="events-btn">Close</button>
+     </div>
+    </div>
+   </div>
+  </div> 
+  <!-- 18 Blessings Cover Modal (full-screen cover image) -->
+  <div id="blessings-cover-modal" class="cover-modal" aria-hidden="true">
+    <div class="cover-content" role="dialog" aria-modal="true">
+      <img id="blessings-cover-img" src="assets/blessings-cover.png" alt="18 Blessings cover image" onerror="this.onerror=null;this.src='assets/image.png';" />
+      <div class="cover-caption">🙏 18 Blessings — Blessings & Well-Wishes</div>
+    </div>
+    <button id="blessings-cover-close" class="cover-close" aria-label="Close cover">&times;</button>
+  </div>
+  <!-- Event Details Modal -->
+  <div id="event-modal" class="event-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>Event Details</h2>
+     <button class="modal-close" id="modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <p>
+      <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect> <line x1="16" y1="2" x2="16" y2="6"></line> <line x1="8" y1="2" x2="8" y2="6"></line> <line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      <span><strong>Date:</strong> <span id="modal-date">Friday, January 23, 2026</span></span>
+     </p>
+     <p>
+      <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle> <polyline points="12,6 12,12 16,14"></polyline></svg>
+      <span><strong>Time:</strong> <span id="modal-time">5:30 PM</span></span>
+     </p>
+     <p>
+      <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path> <circle cx="12" cy="10" r="3"></circle></svg>
+     <span><strong>Venue:</strong><br><span id="modal-venue" style="font-size: 1.1rem; font-weight: 500;">Edgardo's Hotel</span><br><span id="modal-address" style="font-size: 0.95rem; opacity: 0.95;">123 Elegance Avenue, Manila</span></span>
+     </p>
+     <p style="margin-top: 2rem; font-style: italic; text-align: center; border-top: 2px solid rgba(255,255,255,0.4); padding-top: 1.5rem; line-height: 1.8; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+      "Join us for an unforgettable celebration!"
+     </p>
+     <div style="text-align: center;">
+      <button class="events-btn" id="view-events-btn">✨ View Debut Events & 18 Roses ✨</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Debut Events Modal -->
+  <div id="events-modal" class="events-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>Debut Events</h2>
+     <button class="modal-close" id="events-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+     <div class="event-item">
+      <h3>👗 Dress Code</h3>
+      <p>We’d love for you to join us in semi-formal wear, incorporating the specified color palette. Ladies can choose dresses, skirts, or trousers, while gentlemen are encouraged to wear long-sleeved shirts or polo shirts.</p>
+      <div style="margin-top:0.75rem;">
+        <button id="view-dress-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Details</button>
+      </div>
+     </div>
+
+     <div class="event-item">
+      <h3>🎁 Gift Guide</h3>
+      <p>Your presence is the greatest gift of all. However, if you are inclined to give a gift, monetary contributions or thoughtful presents will be gratefully appreciated.</p>
+      <div style="margin-top:0.75rem;">
+        <button id="view-gift-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Details</button>
+      </div>
+     </div> 
+
+     <div class="event-item">
+      <h3 id="roses-heading" class="roses-clickable">🌹 18 Roses</h3>
+      <p>The most iconic part of the debut! Eighteen roses symbolizing 18 years of life and beauty. Each rose represents a special moment and wish for the debutante's future.</p>
+      <span class="rose-counter">18 Roses presented</span>
+      <div style="margin-top:0.75rem;">
+        <button id="view-roses-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Participants</button>
+      </div>
+     </div>
+     <div class="event-item">
+      <h3 id="blessings-heading" class="blessings-clickable">🙏 18 Blessings</h3>
+      <p>A heartfelt ceremony where 18 special people offer blessings and well-wishes to the debutante. Each blessing is a meaningful message for the celebrant's next chapter.</p>
+      <div style="margin-top:0.75rem;">
+        <button id="view-blessings-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Participants</button>
+      </div>
+     </div>
+     <div class="event-item">
+      <h3>👥 18 Candles</h3>
+      <p>Each candle lit by a person special to the debutante, representing important people who have shaped her life and journey to adulthood.</p>
+      <span class="rose-counter">18 Candles ceremony</span>
+     </div>
+     <div class="event-item">
+      <h3>💎 18 TREASURES</h3>
+      <p>Eighteen treasures presented to honor the celebrant. Each treasure represents a meaningful token or memory.</p>
+      <div style="margin-top:0.75rem;">
+        <button id="view-treasures-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Participants</button>
+      </div>
+     </div>
+
+     <div class="event-item">
+      <h3 class="candles-clickable">🕯️ 18 CANDLES</h3>
+      <p>Each candle lit by a person special to the debutante, representing important people who have shaped her life and journey to adulthood.</p>
+      <div style="margin-top:0.75rem;">
+        <button id="view-candles-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Participants</button>
+      </div>
+     </div>
+
+     <div class="event-item">
+      <h3 class="scents-clickable">🌸 18 SCENTS</h3>
+      <p>Eighteen scents presented to celebrate memories and people.</p>
+      <div style="margin-top:0.75rem;">
+        <button id="view-scents-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Participants</button>
+      </div>
+     </div>
+
+     <div class="event-item">
+      <h3 class="makeup-clickable">💄 18 MAKEUP</h3>
+      <p>Professional makeup artists and stylists celebrating the debutante.</p>
+      <div style="margin-top:0.75rem;">
+        <button id="view-makeup-btn" class="events-btn" style="padding:0.5rem 1rem; font-size:0.95rem;">View Participants</button>
+      </div>
+     </div>
+
+     <div class="event-item">
+      <h3>💍 Recuerdo & Tokens</h3>
+      <p>Special tokens, bookmarks, or items are distributed to guests as memorable keepsakes from this milestone celebration.</p>
+     </div>
+     <div class="event-item">
+      <h3>🎉 Grand Reception & Dinner</h3>
+      <p>An elegant reception featuring fine dining, cocktails, and mingling with family and friends. This is the main celebration with music and dancing.</p>
+     </div>
+     <div class="event-item">
+      <h3>🎵 Debutante's Favorite Song</h3>
+      <p>A special musical performance featuring the debutante's favorite song or a custom composition celebrating her unique personality.</p>
+     </div>
+     <div class="event-item">
+      <h3>📸 Photo Opportunities</h3>
+      <p>Dedicated photo booths and professional photography sessions capturing memories throughout the celebration with family and friends.</p>
+     </div>
+     <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 2px solid rgba(255,255,255,0.3); text-align: center;">
+      <p style="font-style: italic; font-size: 1rem; line-height: 1.8; text-shadow: 0 1px 3px rgba(0,0,0,0.2); margin: 0;">✨ Celebrate this beautiful milestone with us! ✨</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- 18 Roses Cover Modal (full-screen cover image) -->
+  <div id="roses-cover-modal" class="cover-modal" aria-hidden="true">
+    <div class="cover-content" role="dialog" aria-modal="true">
+      <img id="roses-cover-img" src="assets/roses-cover.png" alt="18 Roses cover image" onerror="this.onerror=null;this.src='assets/image.png';" />
+      <div class="cover-caption">🌹 18 Roses — Presented with love</div>
+    </div>
+    <button id="roses-cover-close" class="cover-close" aria-label="Close cover">&times;</button>
+  </div>
+  <script>
+    const defaultConfig = {
+      celebrant_name: "Princess Nicole Catapang Mendoza",
+      event_date: "Friday, January 23, 2026",
+      event_time: "5:30 PM",
+      venue_name: "Edgardo's Hotel",
+      venue_address: "123 Elegance Avenue, Manila",
+      invitation_message: "Join me as I celebrate this milestone and embrace the journey to adulthood. Your presence would make this day truly unforgettable.",
+      primary_color: "#F76FA8",
+      secondary_color: "#E8D5C4",
+      text_color: "#FEF3F0",
+      accent_color: "#F4A4C6",
+      font_family: "Cormorant Garamond",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      // Update text content
+      document.getElementById('celebrant-name').textContent = config.celebrant_name || defaultConfig.celebrant_name;
+      document.getElementById('event-date').textContent = config.event_date || defaultConfig.event_date;
+      document.getElementById('event-time').textContent = config.event_time || defaultConfig.event_time;
+      document.getElementById('venue-name').textContent = config.venue_name || defaultConfig.venue_name;
+      document.getElementById('venue-address').textContent = config.venue_address || defaultConfig.venue_address;
+      document.getElementById('invitation-message').textContent = `"${config.invitation_message || defaultConfig.invitation_message}"`;
+      document.getElementById('rsvp-contact').textContent = config.rsvp_contact || defaultConfig.rsvp_contact;
+
+      // Apply colors
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+
+      document.documentElement.style.setProperty('--primary', primaryColor);
+      
+      // Update wrapper background
+      const wrapper = document.getElementById('invitation-wrapper');
+      wrapper.style.background = `linear-gradient(135deg, ${secondaryColor} 0%, ${adjustColor(secondaryColor, 10)} 50%, ${secondaryColor} 100%)`;
+
+      // Update text colors
+      document.getElementById('celebrant-name').style.color = textColor;
+      document.getElementById('event-date').style.color = textColor;
+      document.getElementById('event-time').style.color = textColor;
+      document.getElementById('venue-name').style.color = textColor;
+      document.getElementById('rsvp-contact').style.color = textColor;
+
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'Georgia, serif';
+      document.getElementById('celebrant-name').style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.getElementById('invitation-message').style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+
+      // Apply font size scaling
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.getElementById('celebrant-name').style.fontSize = `${baseSize * 3.5}px`;
+      document.getElementById('event-date').style.fontSize = `${baseSize * 1.125}px`;
+      document.getElementById('event-time').style.fontSize = `${baseSize * 1.125}px`;
+      document.getElementById('venue-name').style.fontSize = `${baseSize * 1.125}px`;
+      document.getElementById('venue-address').style.fontSize = `${baseSize * 0.875}px`;
+      document.getElementById('invitation-message').style.fontSize = `${baseSize * 1.125}px`;
+      document.getElementById('rsvp-contact').style.fontSize = `${baseSize}px`;
+    }
+
+    function adjustColor(hex, percent) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = (num >> 16) + amt;
+      const G = (num >> 8 & 0x00FF) + amt;
+      const B = (num & 0x0000FF) + amt;
+      return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 + (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["celebrant_name", config.celebrant_name || defaultConfig.celebrant_name],
+        ["event_date", config.event_date || defaultConfig.event_date],
+        ["event_time", config.event_time || defaultConfig.event_time],
+        ["venue_name", config.venue_name || defaultConfig.venue_name],
+        ["venue_address", config.venue_address || defaultConfig.venue_address],
+        ["invitation_message", config.invitation_message || defaultConfig.invitation_message],
+        ["rsvp_contact", config.rsvp_contact || defaultConfig.rsvp_contact]
+      ]);
+    }
+
+    // Initialize the SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Modal functionality
+    const envelopeBtn = document.getElementById('envelope-btn');
+    const eventModal = document.getElementById('event-modal');
+    const modalClose = document.getElementById('modal-close');
+    const viewEventsBtn = document.getElementById('view-events-btn');
+    const eventsModal = document.getElementById('events-modal');
+    const eventsModalClose = document.getElementById('events-modal-close');
+    const viewRosesBtn = document.getElementById('view-roses-btn');
+    const rosesModal = document.getElementById('roses-modal');
+    const rosesModalClose = document.getElementById('roses-modal-close');
+    const rosesModalOk = document.getElementById('roses-modal-ok');
+    const rosesCoverModal = document.getElementById('roses-cover-modal');
+    const rosesCoverClose = document.getElementById('roses-cover-close');
+    const rosesCoverImg = document.getElementById('roses-cover-img');
+    const blessingsCoverModal = document.getElementById('blessings-cover-modal');
+    const blessingsCoverClose = document.getElementById('blessings-cover-close');
+    const blessingsCoverImg = document.getElementById('blessings-cover-img');
+    const viewBlessingsBtn = document.getElementById('view-blessings-btn');
+    const blessingsModal = document.getElementById('blessings-modal');
+    const blessingsModalClose = document.getElementById('blessings-modal-close');
+    const blessingsModalOk = document.getElementById('blessings-modal-ok');
+    const viewTreasuresBtn = document.getElementById('view-treasures-btn');
+    const treasuresModal = document.getElementById('treasures-modal');
+    const treasuresModalClose = document.getElementById('treasures-modal-close');
+    const treasuresModalOk = document.getElementById('treasures-modal-ok');
+    const viewCandlesBtn = document.getElementById('view-candles-btn');
+    const candlesModal = document.getElementById('candles-modal');
+    const candlesModalClose = document.getElementById('candles-modal-close');
+    const candlesModalOk = document.getElementById('candles-modal-ok');
+    const viewScentsBtn = document.getElementById('view-scents-btn');
+    const scentsModal = document.getElementById('scents-modal');
+    const scentsModalClose = document.getElementById('scents-modal-close');
+    const scentsModalOk = document.getElementById('scents-modal-ok');
+    const viewMakeupBtn = document.getElementById('view-makeup-btn');
+    const makeupModal = document.getElementById('makeup-modal');
+    const makeupModalClose = document.getElementById('makeup-modal-close');
+    const makeupModalOk = document.getElementById('makeup-modal-ok');
+    const viewDressBtn = document.getElementById('view-dress-btn');
+    const dressModal = document.getElementById('dress-modal');
+    const dressModalClose = document.getElementById('dress-modal-close');
+    const dressModalOk = document.getElementById('dress-modal-ok');
+    const viewGiftBtn = document.getElementById('view-gift-btn');
+    const giftModal = document.getElementById('gift-modal');
+    const giftModalClose = document.getElementById('gift-modal-close');
+    const giftModalOk = document.getElementById('gift-modal-ok');
+    const rosesHeading = document.getElementById('roses-heading');
+    const blessingsHeading = document.getElementById('blessings-heading');}
+
+
+    if (envelopeBtn) {
+      envelopeBtn.addEventListener('click', function() {
+        try {
+          console.log('Envelope button clicked');
+          console.log('eventModal exists:', !!eventModal);
+          console.log('eventModal element:', eventModal);
+          
+          if (eventModal) {
+            console.log('Event modal ID:', eventModal.id);
+            console.log('Event modal class:', eventModal.className);
+            
+            // Make it visible with inline styles
+            eventModal.style.display = 'flex';
+            eventModal.style.position = 'fixed';
+            eventModal.style.top = '0';
+            eventModal.style.left = '0';
+            eventModal.style.width = '100%';
+            eventModal.style.height = '100%';
+            eventModal.style.zIndex = '9999';
+            eventModal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            eventModal.style.alignItems = 'center';
+            eventModal.style.justifyContent = 'center';
+            
+            console.log('After styles - display:', eventModal.style.display);
+          } else {
+            console.error('eventModal is null/undefined');
+          }
+        } catch (e) {
+          console.error('Error in envelope click:', e);
+        }
+      });
+    } else {
+      console.error('envelopeBtn not found');
+    }
+
+    if (modalClose) {
+      modalClose.addEventListener('click', function() {
+        if (eventModal) {
+          eventModal.classList.remove('active');
+          eventModal.style.display = 'none';
+        }
+      });
+    }
+
+    // View Events button - opens nested modal
+    viewEventsBtn.addEventListener('click', () => {
+      eventsModal.classList.add('active');
+    });
+
+    // Open 18 Roses participants modal (from events modal)
+    if (viewRosesBtn) {
+      viewRosesBtn.addEventListener('click', () => {
+        // Bring the participants modal to front without closing other modals
+        if (rosesModal) {
+          rosesModal.style.zIndex = '1202';
+          // show it on top
+          rosesModal.classList.add('active');
+          rosesModal.setAttribute('aria-hidden', 'false');
+          // prevent background scroll while participants list is open
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+
+    // Open 18 Blessings participants modal (from events modal)
+    if (viewBlessingsBtn) {
+      viewBlessingsBtn.addEventListener('click', () => {
+        console.log('view-blessings-btn clicked');
+        if (blessingsModal) {
+          // bring it to the front without closing other modals
+          blessingsModal.style.zIndex = '1400';
+          blessingsModal.classList.add('active');
+          blessingsModal.style.display = 'flex';
+          // ensure modal-content is above overlay
+          const content = blessingsModal.querySelector('.modal-content');
+          if (content) content.style.zIndex = '1401';
+          blessingsModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('blessingsModal element not found');
+        }
+      });
+    }
+
+    // Open 18 TREASURES participants modal (from events modal)
+    if (viewTreasuresBtn) {
+      viewTreasuresBtn.addEventListener('click', () => {
+        console.log('view-treasures-btn clicked');
+        if (treasuresModal) {
+          treasuresModal.style.zIndex = '1400';
+          treasuresModal.classList.add('active');
+          treasuresModal.style.display = 'flex';
+          const content = treasuresModal.querySelector('.modal-content');
+          if (content) content.style.zIndex = '1401';
+          treasuresModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('treasuresModal element not found');
+        }
+      });
+    }
+
+    // Open 18 CANDLES participants modal (from events modal)
+    if (viewCandlesBtn) {
+      viewCandlesBtn.addEventListener('click', () => {
+        console.log('view-candles-btn clicked');
+        if (candlesModal) {
+          candlesModal.style.zIndex = '1400';
+          candlesModal.classList.add('active');
+          candlesModal.style.display = 'flex';
+          const content = candlesModal.querySelector('.modal-content');
+          if (content) content.style.zIndex = '1401';
+          candlesModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('candlesModal element not found');
+        }
+      });
+    }
+
+    // Open 18 SCENTS participants modal (from events modal)
+    if (viewScentsBtn) {
+      viewScentsBtn.addEventListener('click', () => {
+        console.log('view-scents-btn clicked');
+        if (scentsModal) {
+          scentsModal.style.zIndex = '1400';
+          scentsModal.classList.add('active');
+          scentsModal.style.display = 'flex';
+          const content = scentsModal.querySelector('.modal-content');
+          if (content) content.style.zIndex = '1401';
+          scentsModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('scentsModal element not found');
+        }
+      });
+    }
+
+    // Open 18 MAKEUP participants modal (from events modal)
+    if (viewMakeupBtn) {
+      viewMakeupBtn.addEventListener('click', () => {
+        console.log('view-makeup-btn clicked');
+        if (makeupModal) {
+          makeupModal.style.zIndex = '1400';
+          makeupModal.classList.add('active');
+          makeupModal.style.display = 'flex';
+          const content = makeupModal.querySelector('.modal-content');
+          if (content) content.style.zIndex = '1401';
+          makeupModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('makeupModal element not found');
+        }
+      });
+    }
+
+    // Open Dress Code modal (from events modal)
+    if (viewDressBtn) {
+      viewDressBtn.addEventListener('click', () => {
+        console.log('view-dress-btn clicked');
+        if (dressModal) {
+          dressModal.style.zIndex = '1400';
+          dressModal.classList.add('active');
+          dressModal.style.display = 'flex';
+          const content = dressModal.querySelector('.modal-content');
+          if (content) content.style.zIndex = '1401';
+          dressModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('dressModal element not found');
+        }
+      });
+    }
+
+    // Open Gift Guide modal (from events modal)
+    if (viewGiftBtn) {
+      viewGiftBtn.addEventListener('click', () => {
+        console.log('view-gift-btn clicked');
+        if (giftModal) {
+          giftModal.style.zIndex = '1400';
+          giftModal.classList.add('active');
+          giftModal.style.display = 'flex';
+          const content = giftModal.querySelector('.modal-content');
+          if (content) content.style.zIndex = '1401';
+          giftModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('giftModal element not found');
+        }
+      });
+    }
+
+    // Clicking the 18 Roses heading opens a full-screen cover view
+    // Wire roses heading directly (reliable ID-based binding)
+    if (rosesHeading) {
+      rosesHeading.addEventListener('click', () => {
+        // close any open modals so the cover is not occluded
+        if (eventsModal && eventsModal.classList.contains('active')) eventsModal.classList.remove('active');
+        if (eventModal && eventModal.classList.contains('active')) eventModal.classList.remove('active');
+        if (rosesModal && rosesModal.classList.contains('active')) rosesModal.classList.remove('active');
+        if (rosesCoverModal) {
+          rosesCoverModal.classList.add('active');
+          rosesCoverModal.setAttribute('aria-hidden', 'false');
+          // pause background scroll while cover is open
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+
+    // Wire blessings heading directly (reliable ID-based binding)
+    if (blessingsHeading) {
+      blessingsHeading.addEventListener('click', () => {
+        console.log('blessings heading clicked');
+        // close other modals that might occlude the cover
+        if (eventsModal && eventsModal.classList.contains('active')) eventsModal.classList.remove('active');
+        if (eventModal && eventModal.classList.contains('active')) eventModal.classList.remove('active');
+        if (rosesModal && rosesModal.classList.contains('active')) rosesModal.classList.remove('active');
+        if (blessingsModal && blessingsModal.classList.contains('active')) blessingsModal.classList.remove('active');
+        if (blessingsCoverModal) {
+          blessingsCoverModal.classList.add('active');
+          blessingsCoverModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.warn('blessingsCoverModal element not found');
+        }
+      });
+    }
+
+    eventsModalClose.addEventListener('click', () => {
+      eventsModal.classList.remove('active');
+    });
+
+    if (rosesModalClose) {
+      rosesModalClose.addEventListener('click', () => {
+        if (rosesModal) {
+          rosesModal.classList.remove('active');
+          rosesModal.setAttribute('aria-hidden', 'true');
+          rosesModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (rosesModalOk) {
+      rosesModalOk.addEventListener('click', () => {
+        if (rosesModal) {
+          rosesModal.classList.remove('active');
+          rosesModal.setAttribute('aria-hidden', 'true');
+          rosesModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (blessingsModalClose) {
+      blessingsModalClose.addEventListener('click', () => {
+        if (blessingsModal) {
+          blessingsModal.classList.remove('active');
+          blessingsModal.setAttribute('aria-hidden', 'true');
+          blessingsModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (blessingsModalOk) {
+      blessingsModalOk.addEventListener('click', () => {
+        if (blessingsModal) {
+          blessingsModal.classList.remove('active');
+          blessingsModal.setAttribute('aria-hidden', 'true');
+          blessingsModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (treasuresModalClose) {
+      treasuresModalClose.addEventListener('click', () => {
+        if (treasuresModal) {
+          treasuresModal.classList.remove('active');
+          treasuresModal.setAttribute('aria-hidden', 'true');
+          treasuresModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (treasuresModalOk) {
+      treasuresModalOk.addEventListener('click', () => {
+        if (treasuresModal) {
+          treasuresModal.classList.remove('active');
+          treasuresModal.setAttribute('aria-hidden', 'true');
+          treasuresModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (treasuresModal) {
+      treasuresModal.addEventListener('click', (e) => {
+        if (e.target === treasuresModal) {
+          treasuresModal.classList.remove('active');
+          treasuresModal.setAttribute('aria-hidden', 'true');
+          treasuresModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (candlesModalClose) {
+      candlesModalClose.addEventListener('click', () => {
+        if (candlesModal) {
+          candlesModal.classList.remove('active');
+          candlesModal.setAttribute('aria-hidden', 'true');
+          candlesModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (candlesModalOk) {
+      candlesModalOk.addEventListener('click', () => {
+        if (candlesModal) {
+          candlesModal.classList.remove('active');
+          candlesModal.setAttribute('aria-hidden', 'true');
+          candlesModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (candlesModal) {
+      candlesModal.addEventListener('click', (e) => {
+        if (e.target === candlesModal) {
+          candlesModal.classList.remove('active');
+          candlesModal.setAttribute('aria-hidden', 'true');
+          candlesModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (scentsModalClose) {
+      scentsModalClose.addEventListener('click', () => {
+        if (scentsModal) {
+          scentsModal.classList.remove('active');
+          scentsModal.setAttribute('aria-hidden', 'true');
+          scentsModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (scentsModalOk) {
+      scentsModalOk.addEventListener('click', () => {
+        if (scentsModal) {
+          scentsModal.classList.remove('active');
+          scentsModal.setAttribute('aria-hidden', 'true');
+          scentsModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (scentsModal) {
+      scentsModal.addEventListener('click', (e) => {
+        if (e.target === scentsModal) {
+          scentsModal.classList.remove('active');
+          scentsModal.setAttribute('aria-hidden', 'true');
+          scentsModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (makeupModalClose) {
+      makeupModalClose.addEventListener('click', () => {
+        if (makeupModal) {
+          makeupModal.classList.remove('active');
+          makeupModal.setAttribute('aria-hidden', 'true');
+          makeupModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (makeupModalOk) {
+      makeupModalOk.addEventListener('click', () => {
+        if (makeupModal) {
+          makeupModal.classList.remove('active');
+          makeupModal.setAttribute('aria-hidden', 'true');
+          makeupModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (makeupModal) {
+      makeupModal.addEventListener('click', (e) => {
+        if (e.target === makeupModal) {
+          makeupModal.classList.remove('active');
+          makeupModal.setAttribute('aria-hidden', 'true');
+          makeupModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (dressModalClose) {
+      dressModalClose.addEventListener('click', () => {
+        if (dressModal) {
+          dressModal.classList.remove('active');
+          dressModal.setAttribute('aria-hidden', 'true');
+          dressModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (dressModalOk) {
+      dressModalOk.addEventListener('click', () => {
+        if (dressModal) {
+          dressModal.classList.remove('active');
+          dressModal.setAttribute('aria-hidden', 'true');
+          dressModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (dressModal) {
+      dressModal.addEventListener('click', (e) => {
+        if (e.target === dressModal) {
+          dressModal.classList.remove('active');
+          dressModal.setAttribute('aria-hidden', 'true');
+          dressModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (giftModalClose) {
+      giftModalClose.addEventListener('click', () => {
+        if (giftModal) {
+          giftModal.classList.remove('active');
+          giftModal.setAttribute('aria-hidden', 'true');
+          giftModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (giftModalOk) {
+      giftModalOk.addEventListener('click', () => {
+        if (giftModal) {
+          giftModal.classList.remove('active');
+          giftModal.setAttribute('aria-hidden', 'true');
+          giftModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (giftModal) {
+      giftModal.addEventListener('click', (e) => {
+        if (e.target === giftModal) {
+          giftModal.classList.remove('active');
+          giftModal.setAttribute('aria-hidden', 'true');
+          giftModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (rosesCoverClose) {
+      rosesCoverClose.addEventListener('click', () => {
+        if (rosesCoverModal) {
+          rosesCoverModal.classList.remove('active');
+          rosesCoverModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (blessingsCoverClose) {
+      blessingsCoverClose.addEventListener('click', () => {
+        if (blessingsCoverModal) {
+          blessingsCoverModal.classList.remove('active');
+          blessingsCoverModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Close event modal when clicking outside
+    eventsModal.addEventListener('click', (e) => {
+      if (e.target === eventsModal) {
+        eventsModal.classList.remove('active');
+      }
+    });
+
+    // Close roses modal when clicking outside
+    if (rosesModal) {
+      rosesModal.addEventListener('click', (e) => {
+        if (e.target === rosesModal) {
+          rosesModal.classList.remove('active');
+          rosesModal.setAttribute('aria-hidden', 'true');
+          rosesModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Close blessings modal when clicking outside
+    if (blessingsModal) {
+      blessingsModal.addEventListener('click', (e) => {
+        if (e.target === blessingsModal) {
+          blessingsModal.classList.remove('active');
+          blessingsModal.setAttribute('aria-hidden', 'true');
+          blessingsModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Close cover modal when clicking outside the image area
+    if (rosesCoverModal) {
+      rosesCoverModal.addEventListener('click', (e) => {
+        if (e.target === rosesCoverModal) {
+          rosesCoverModal.classList.remove('active');
+          rosesCoverModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (blessingsCoverModal) {
+      blessingsCoverModal.addEventListener('click', (e) => {
+        if (e.target === blessingsCoverModal) {
+          blessingsCoverModal.classList.remove('active');
+          blessingsCoverModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Close modal when clicking outside
+    if (eventModal) {
+      eventModal.addEventListener('click', (e) => {
+        if (e.target === eventModal) {
+          console.log('clicking outside event-modal to close');
+          eventModal.classList.remove('active');
+        }
+      });
+    }
+
+    // Close modals on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (blessingsCoverModal && blessingsCoverModal.classList.contains('active')) {
+          blessingsCoverModal.classList.remove('active');
+          blessingsCoverModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        } else if (rosesCoverModal && rosesCoverModal.classList.contains('active')) {
+          rosesCoverModal.classList.remove('active');
+          rosesCoverModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        } else if (rosesModal && rosesModal.classList.contains('active')) {
+          rosesModal.classList.remove('active');
+          rosesModal.setAttribute('aria-hidden', 'true');
+          rosesModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        } else if (blessingsModal && blessingsModal.classList.contains('active')) {
+          blessingsModal.classList.remove('active');
+          blessingsModal.setAttribute('aria-hidden', 'true');
+          blessingsModal.style.zIndex = '';
+          document.body.style.overflow = '';
+        } else if (eventsModal.classList.contains('active')) {
+          eventsModal.classList.remove('active');
+        } else if (eventModal.classList.contains('active')) {
+          eventModal.classList.remove('active');
+        }
+      }
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc0b28b412307b1',t:'MTc2ODA5NTUzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
