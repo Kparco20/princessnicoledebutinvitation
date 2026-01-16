@@ -74,7 +74,7 @@ const events = {
     'Ruth Castillo',
     'Wheng Catapang',
     'Tristan Paul Gain',
-    'Eugenie Gain',
+    'Renan Catapang',
     'Hermis Catapang',
     'Marjorie Catapang',
     'Annaliza Catapang',
